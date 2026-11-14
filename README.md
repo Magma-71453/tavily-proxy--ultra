@@ -58,6 +58,8 @@ Each tool is registered under both the current official spelling and the legacy 
 
 `tavily_research` is asynchronous, mirroring the `POST /research` + `GET /research/{request_id}` API. It accepts `input`, `model` (`mini`/`pro`/`auto`), `citation_format`, `output_length`, `include_domains`, `exclude_domains`, `output_schema` (JSON Schema for a structured report) and `files` (up to 5 base64 attachments, `.txt`/`.md`/`.json`).
 
+The API's `stream` flag is the only request field not exposed — an SSE stream does not fit an MCP tool result, so long tasks are polled instead.
+
 It returns the task's `request_id` immediately. Set `wait_seconds` (0-240, default 0) to poll server-side first, which returns the finished report inline when the task completes in time. `tavily_research_get` reports `pending`, `in_progress`, `completed` or `failed`, with the report in `content` and its sources in `sources`.
 
 ### Not proxied
