@@ -44,3 +44,14 @@ export async function crawl(apiKey: string, params: Record<string, unknown>) {
 export async function map(apiKey: string, params: Record<string, unknown>) {
   return tavilyRequest("/map", "POST", apiKey, params);
 }
+
+/** Create a research task. Returns 201 with a request_id. */
+export async function research(apiKey: string, params: Record<string, unknown>) {
+  return tavilyRequest("/research", "POST", apiKey, params);
+}
+
+/** Poll a research task. Returns 202 while pending/in_progress, 200 when settled. */
+export async function getResearch(apiKey: string, requestId: string, includeUsage = false) {
+  const query = includeUsage ? "?include_usage=true" : "";
+  return tavilyRequest(`/research/${encodeURIComponent(requestId)}${query}`, "GET", apiKey);
+}
