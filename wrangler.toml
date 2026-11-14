@@ -9,7 +9,7 @@ compatibility_flags = ["nodejs_compat"]
 
 [[kv_namespaces]]
 binding = "KV"
-id = "8c9031329f264adb85952b069e2b5cce"
+id = "0bf128f7942c4b8ca4b4c8f8c898ae08" # namespace created by the Cloudflare deploy flow
 preview_id = "local-dev-kv"
 
 # Cloudflare cron expressions use UTC. 16:00 UTC is 00:00 Asia/Shanghai.
